@@ -38,7 +38,7 @@ static const u16 sSoundMovesTable[] =
 
 static const u16 sPrioMoves[] =
 {
-    MOVE_QUICK_ATTACK, MOVE_EXTREMESPEED, MOVE_FAKE_OUT, MOVE_FEINT, MOVE_MACH_PUNCH, PRIO_MOVES_END
+    MOVE_QUICK_ATTACK, MOVE_EXTREME_SPEED, MOVE_FAKE_OUT, MOVE_MACH_PUNCH, PRIO_MOVES_END
 };
 
 #define TAUNT_MOVES_END 0xFFFF
@@ -48,6 +48,10 @@ static const u16 sTauntMoves[] =
     MOVE_TAUNT, MOVE_FOLLOW_ME, TAUNT_MOVES_END
 };
 
+extern const u8 BattleScript_TruantHeal[];
+extern const u8 BattleScript_SnowWarningActivates[];
+extern const u8 BattleScript_LowHpAbilityBoost[];
+extern const u8 BattleScript_DampCuresStatus[];
 
 u8 GetBattlerForBattleScript(u8 caseId)
 {
@@ -708,7 +712,7 @@ u8 DoFieldEndTurnEffects(void)
             if (gBattleWeather & B_WEATHER_HAIL)
             {
                 if (!(gBattleWeather & B_WEATHER_HAIL_PERMANENT)   // ADD this guard
-                && if (--gWishFutureKnock.weatherDuration == 0)
+                && --gWishFutureKnock.weatherDuration == 0)
                 {
                     gBattleWeather &= ~B_WEATHER_HAIL_TEMPORARY;
                     gBattlescriptCurrInstr = BattleScript_SandStormHailEnds;
@@ -810,10 +814,7 @@ u8 DoBattlerEndTurnEffects(void)
                     gBattlerTarget = gStatuses3[gActiveBattler] & STATUS3_LEECHSEED_BATTLER; // Notice gBattlerTarget is actually the HP receiver.
                     if (gBattleMons[gActiveBattler].status1 & STATUS1_TOXIC_POISON) // Replicates the Gen 1 bug
                     {
-                        u8 counter = gBattleStruct ->toxicTurnCounter[gActiveBattler];
-                        if (counter == 0)
-                            counter = 1;
-                        gBattleMoveDamage = (gBattleMons[gActiveBattler].maxHP / 16) * counter;
+                        gBattleMoveDamage = (gBattleMons[gActiveBattler].maxHP / 16) * STATUS1_TOXIC_COUNTER;
                     }
                     else
                     {
@@ -1861,6 +1862,8 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     }
                 }
                 break;
+            }
+            break;
             case ABILITYEFFECT_HP_CHANGE:
                 {
                     u8 ability = gBattleMons[battler].ability;
@@ -1885,7 +1888,8 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                             case ABILITY_ILLUMINATE: gBattleCommunication[MULTISTRING_CHOOSER] = 5; break;
                             case ABILITY_STENCH:     gBattleCommunication[MULTISTRING_CHOOSER] = 6; break;
                         }
-                        gBattlerAbility = battler;
+                        gLastUsedAbility = gBattleMons[battler].ability;
+                        RecordAbilityBattle(battler, gLastUsedAbility);
                         BattleScriptPushCursor();
                         gBattlescriptCurrInstr = BattleScript_LowHpAbilityBoost;
                         effect++;
@@ -1908,19 +1912,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                         if (gBattleMoveDamage == 0)
                             gBattleMoveDamage = 1;
                         gBattleMoveDamage *= -1;
-                        effect++;
-                    }
-                    break;
-                case ABILITY_TRUANT:
-                    if ((gBattleMons[battler].status1 & STATUS1_SLEEP)
-                    && gBattleMons[battler].maxHP > gBattleMons[battler].hp)
-                    {
-                        gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
-                        if (gBattleMoveDamage == 0)
-                            gBattleMoveDamage = 1;
-                        gBattleMoveDamage *= -1;
-                        gBattleScripting.battler = gActiveBattler = battler;
-                        BattleScriptPushCursorAndCallback(BattleScript_TruantHeal);
                         effect++;
                     }
                     break;
@@ -1983,7 +1974,20 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
                     }
                     break;
                 case ABILITY_TRUANT:
-                    gDisableStructs[gBattlerAttacker].truantCounter ^= 1;
+                    // Sleep heal
+                    if ((gBattleMons[battler].status1 & STATUS1_SLEEP)
+                     && gBattleMons[battler].maxHP > gBattleMons[battler].hp)
+                    {
+                        gBattleMoveDamage = gBattleMons[battler].maxHP / 16;
+                        if (gBattleMoveDamage == 0)
+                            gBattleMoveDamage = 1;
+                        gBattleMoveDamage *= -1;
+                        gBattleScripting.battler = gActiveBattler = battler;
+                        BattleScriptPushCursorAndCallback(BattleScript_TruantHeal);
+                        effect++;
+                    }
+                    // Truant counter toggle
+                    gDisableStructs[gBattlerAttacker].truantCounter ^= 1; 
                     break;
                 }
             }
@@ -2110,20 +2114,20 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
         case ABILITYEFFECT_ON_DAMAGE: // Think contact abilities.
             switch (gLastUsedAbility)
             {
-            case ABILITY_COLOR_CHANGE:
-                if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
-                 && move != MOVE_STRUGGLE
-                 && gBattleMoves[move].power != 0
-                 && TARGET_TURN_DAMAGED
-                 && !IS_BATTLER_OF_TYPE(battler, moveType)
-                 && gBattleMons[battler].hp != 0)
-                {
-                    SET_BATTLER_TYPE(battler, moveType);
-                    PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
-                    BattleScriptPushCursor();
-                    gBattlescriptCurrInstr = BattleScript_ColorChangeActivates;
-                    effect++;
-                }
+                case ABILITY_COLOR_CHANGE:
+                    if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+                     && move != MOVE_STRUGGLE
+                     && gBattleMoves[move].power != 0
+                     && TARGET_TURN_DAMAGED
+                     && !IS_BATTLER_OF_TYPE(battler, moveType)
+                     && gBattleMons[battler].hp != 0)
+                    {
+                        SET_BATTLER_TYPE(battler, moveType);
+                        PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
+                        BattleScriptPushCursor();
+                        gBattlescriptCurrInstr = BattleScript_ColorChangeActivates;
+                        effect++;
+                    }
                 break;
             case ABILITY_ROUGH_SKIN:
                 if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)

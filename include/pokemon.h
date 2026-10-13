@@ -5,6 +5,8 @@
 #include "sprite.h"
 #include "constants/pokemon.h"
 
+extern u8 gEvolutionMethodUsed;
+
 struct PokemonSubstruct0
 {
     u16 species;

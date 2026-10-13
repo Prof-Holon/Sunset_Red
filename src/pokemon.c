@@ -1649,7 +1649,7 @@ static const u16 sSlicingMoves[] =
 
 static const u16 sClawMoves[] =
 {
-    MOVE_VISE_GRIP, MOVE_CLAMP, MOVE_CRABHAMMER, MOVE_METAL_CLAW,
+    MOVE_VICE_GRIP, MOVE_CLAMP, MOVE_CRABHAMMER, MOVE_METAL_CLAW,
     MOVE_CRUSH_CLAW, MOVE_DRAGON_CLAW, MOVE_GUILLOTINE, ABILITY_MOVE_LIST_END
 };
 
@@ -2552,7 +2552,7 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         spAttack /= 2;
     if (defender->ability == ABILITY_MAGMA_ARMOR && (type == TYPE_FIRE || type == TYPE_GROUND))
         gBattleMovePower = (50 * gBattleMovePower) / 100;
-    if (attacker->ability == ABILITY_HUSTLE)
+    if (attacker->ability == ABILITY_HUSTLE
         && (gBattleMoves[move].flags & FLAG_MAKES_CONTACT)) // boost only for contact moves
         gBattleMovePower = (150 * gBattleMovePower) / 100; // alternatively boost both attack and SpAttack but this is neater
     if (attacker->ability == ABILITY_PLUS && HasOtherRockType(gBattlerAttacker))

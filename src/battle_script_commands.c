@@ -39,6 +39,14 @@
 
 extern const u8 *const gBattleScriptsForMoveEffects[];
 
+#define SOUND_MOVES_END 0xFFFF
+
+static const u16 sSoundMovesTable[] =
+{
+    MOVE_GROWL, MOVE_ROAR, MOVE_SING, MOVE_SUPERSONIC, MOVE_SCREECH, MOVE_SNORE,
+    MOVE_UPROAR, MOVE_METAL_SOUND, MOVE_GRASS_WHISTLE, MOVE_HYPER_VOICE, SOUND_MOVES_END
+};
+
 #define DEFENDER_IS_PROTECTED ((gProtectStructs[gBattlerTarget].protected) && (gBattleMoves[gCurrentMove].flags & FLAG_PROTECT_AFFECTED))
 
 #define LEVEL_UP_BANNER_START 416
@@ -965,7 +973,6 @@ static bool8 AccuracyCalcHelper(u16 move)
     // ADD: Cacophony — sound moves always hit
     if (gBattleMons[gBattlerAttacker].ability == ABILITY_CACOPHONY)
     {
-        extern const u16 sSoundMovesTable[];   // defined in battle_util.c
         s32 i;
         for (i = 0; sSoundMovesTable[i] != 0xFFFF; i++)
         {

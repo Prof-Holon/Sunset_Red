@@ -968,7 +968,7 @@ BattleScript_EffectSpeedDown2::
 	goto BattleScript_EffectStatDown
 
 BattleScript_EffectSpecialDefenseDown2::
-	setstatchanger STAT_SPDEF, 2, TRUE
+	setstatchanger STAT_SPATK, 2, TRUE
 	goto BattleScript_EffectStatDown
 
 BattleScript_EffectReflect::

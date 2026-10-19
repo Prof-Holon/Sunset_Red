@@ -1377,14 +1377,14 @@ static const s8 sNatureStatTable[NUM_NATURES][NUM_NATURE_STATS] =
     [NATURE_JOLLY]   = {    0,      0,     +1,     -1,      0   },
     [NATURE_NAIVE]   = {    0,      0,     +1,      0,     -1   },
     [NATURE_MODEST]  = {   -1,      0,      0,     +1,      0   },
-    [NATURE_MILD]    = {    0,     -1,      0,     +1,      0   },
+    [NATURE_MILD]    = {    0,     0,      0,     0,      0   },
     [NATURE_QUIET]   = {    0,      0,     -1,     +1,      0   },
     [NATURE_BASHFUL] = {    0,      0,      0,      0,      0   },
-    [NATURE_RASH]    = {    0,      0,      0,     +1,     -1   },
+    [NATURE_RASH]    = {    0,      -1,      0,     +1,     0   },
     [NATURE_CALM]    = {   -1,      0,      0,      0,     +1   },
     [NATURE_GENTLE]  = {    0,     -1,      0,      0,     +1   },
     [NATURE_SASSY]   = {    0,      0,     -1,      0,     +1   },
-    [NATURE_CAREFUL] = {    0,      0,      0,     -1,     +1   },
+    [NATURE_CAREFUL] = {    0,      0,      0,     0,     0   },
     [NATURE_QUIRKY]  = {    0,      0,      0,      0,      0   },
 };
 

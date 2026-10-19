@@ -2562,28 +2562,28 @@ static void PrintSkillsPage(void)
     AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 14 + sMonSkillsPrinterXpos->curHpStr, 4, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.curHpStrBuf);
 
     // ADD: HP IV and EV on the same row
-    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 56, 4, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[4]);
-    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 70, 4, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[4]);
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 58, 4, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[4]);
+    // AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 70, 4, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[4]);
 
     // ATK — y=22, stat value left column, IV and EV right columns
     AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 50 + sMonSkillsPrinterXpos->atkStr, 22, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.statValueStrBufs[PSS_STAT_ATK]);
-    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 56, 22, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[0]);
-    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 70, 22, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[0]);
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 58, 22, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[0]);
+    // AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 70, 22, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[0]);
 
     // DEF — y=35
     AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 50 + sMonSkillsPrinterXpos->defStr, 35, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.statValueStrBufs[PSS_STAT_DEF]);
-    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 56, 35, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[1]);
-    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 70, 35, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[1]);
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 58, 35, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[1]);
+   // AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 70, 35, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[1]);
 
     // SPECIAL — y=54 (centred between old y=48 and y=61, SpDef row removed)
     AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 50 + sMonSkillsPrinterXpos->spAStr, 54, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.statValueStrBufs[PSS_STAT_SPA]);
-    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 56, 54, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[2]);
-    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 70, 54, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[2]);
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 58, 54, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[2]);
+   // AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 70, 54, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[2]);
 
     // SPEED — not shifted
     AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 50 + sMonSkillsPrinterXpos->speStr, 74, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.statValueStrBufs[PSS_STAT_SPE]);
-    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 56, 74, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[3]);
-    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 70, 74, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[3]);
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 58, 74, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[3]);
+   // AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 70, 74, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[3]);
 
     // EXP — not shifted
     AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 15 + sMonSkillsPrinterXpos->expStr, 87, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.expPointsStrBuf);

@@ -129,3 +129,32 @@ VermilionCity_Text_Route2AideHasPackageForYou::
     .string "If you're in the ROUTE 2 area,\n"
     .string "please look for him.$"
 
+VermilionCity_Text_AlreadySquirted::
+    .string "I'm on the lookout for\n"
+    .string "Team Rocket smugglers.$"
+
+VermilionCity_Text_SquirtleLostItem::
+    .string "I confiscated a SQUIRTLE from\n"
+    .string "a Team Rocket smuggler, but it\l"
+    .string "won't listen to me for some\l"
+    .string "reason...$"
+
+VermilionCity_Text_SquirtleYesNo::
+    .string "Oh! SQUIRTLE seems to want\n"
+    .string "those sunglasses you found.\p"
+    .string "If you give them to it, I'll\n"
+    .string "let you take it with you.\p"
+    .string "Might be a trainer like you\n"
+    .string "can help this SQUIRTLE get\n"
+    .string "back on the right track.\p"
+    .string "What do you say?$"
+
+VermilionCity_Text_GiveSquirtle::
+	.string "{PLAYER} received a SQUIRTLE!$"
+
+VermilionCity_Text_RefusedToSquirt::
+    .string "Fair enough, this one's\n"
+    .string "a real handful!$"
+
+VermilionCity_Text_PartyFull::
+	.string "Ah, your party is full.$"

@@ -264,3 +264,47 @@ VermilionCity_EventScript_GymSign::
 VermilionCity_EventScript_HarborSign::
 	msgbox VermilionCity_Text_VermilionHarbor, MSGBOX_SIGN
 	end
+
+VermilionCity_EventScript_SquirtleSquad::
+	lock
+	faceplayer
+	goto_if_eq PLAYER_STARTER_SPECIES, SPECIES_SQUIRTLE, VermilionCity_EventScript_AlreadySquirted
+	goto_if_set FLAG_SQUIRTLE_GIFT, VermilionCity_EventScript_AlreadySquirted
+	msgbox VermilionCity_Text_SquirtleLostItem
+	checkitem ITEM_BLACK_GLASSES, 1
+	compare VAR_RESULT, 1
+	goto_if_ge VermilionCity_EventScript_ObtainedShades
+	releaseall
+	end
+
+VermilionCity_EventScript_AlreadySquirted::
+	msgbox VermilionCity_Text_AlreadySquirted
+	releaseall
+	end
+
+@ give squirtle here
+VermilionCity_EventScript_ObtainedShades::
+	msgbox VermilionCity_Text_SquirtleYesNo, MSGBOX_YESNO
+	compare VAR_RESULT, 0
+	goto_if_eq VermilionCity_EventScript_RefusedToSquirt
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_eq VermilionCity_EventScript_PartyFull
+	removeitem ITEM_BLACK_GLASSES, 1
+	givemon SPECIES_SQUIRTLE, 10, ITEM_BLACK_GLASSES
+	setflag FLAG_SQUIRTLE_GIFT
+	playfanfare MUS_LEVEL_UP
+	msgbox VermilionCity_Text_GiveSquirtle
+	waitfanfare
+	releaseall
+	end
+
+VermilionCity_EventScript_RefusedToSquirt::
+	msgbox VermilionCity_Text_RefusedToSquirt
+	releaseall
+	end
+
+VermilionCity_EventScript_PartyFull::
+	msgbox VermilionCity_Text_PartyFull
+	releaseall
+	end

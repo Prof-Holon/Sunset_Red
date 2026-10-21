@@ -95,3 +95,43 @@ Route24_Movement_RocketWalkBackToPos::
 Route24_Movement_WalkDown::
 	walk_down
 	step_end
+
+Route24_EventScript_GiveCharmander::
+	lock
+	faceplayer
+	goto_if_set FLAG_GIFT_CHARMANDER, Route24_AlreadyGiftedCharmander
+	goto_if_eq PLAYER_STARTER_SPECIES, SPECIES_CHARMANDER, Route24_PlayerChoseCharmander
+	msgbox Route24_Text_CharmanderQuestion, MSGBOX_YESNO
+	compare VAR_RESULT, 0
+	goto_if_eq Route24_PlayerAnsweredNo
+	msgbox Route24_Text_TakeCharmander, MSGBOX_DEFAULT
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_eq Route24_PlayerHasFullParty
+	givemon SPECIES_CHARMANDER, 10, ITEM_CHARCOAL
+	setflag FLAG_GIFT_CHARMANDER
+	playfanfare MUS_LEVEL_UP
+	msgbox Route24_Text_ReceivedCharmander, MSGBOX_DEFAULT
+	waitfanfare
+	release
+	end
+
+Route24_AlreadyGiftedCharmander::
+	msgbox Route24_Text_AlreadyGiftedCharmander
+	release
+	end
+
+Route24_PlayerChoseCharmander::
+	msgbox Route24_Text_PlayerChoseCharmander, MSGBOX_DEFAULT
+	release
+	end
+
+Route24_PlayerHasFullParty::
+	msgbox Route24_Text_PlayerHasFullParty, MSGBOX_DEFAULT
+	release
+	end
+
+Route24_PlayerAnsweredNo::
+	msgbox Route24_Text_PlayerAnsweredNo, MSGBOX_DEFAULT
+	release
+	end

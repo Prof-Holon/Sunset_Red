@@ -62,3 +62,13 @@ ViridianForest_EventScript_Charlie::
 	trainerbattle_single TRAINER_BUG_CATCHER_CHARLIE, ViridianForest_Text_CharlieIntro, ViridianForest_Text_CharlieDefeat
 	msgbox ViridianForest_Text_CharliePostBattle, MSGBOX_AUTOCLOSE
 	end
+
+ViridianForest_EventScript_Stacey::
+	trainerbattle_single TRAINER_BUG_CATCHER_STACEY, ViridianForest_Text_CharlieIntro, ViridianForest_Text_CharlieDefeat
+	msgbox ViridianForest_Text_CharliePostBattle, MSGBOX_AUTOCLOSE
+	end
+
+ViridianForest_EventScript_Brittany::
+	trainerbattle_single TRAINER_LASS_BRITTANY, ViridianForest_Text_AnthonyIntro, ViridianForest_Text_AnthonyDefeat
+	msgbox ViridianForest_Text_AnthonyPostBattle, MSGBOX_AUTOCLOSE
+	end

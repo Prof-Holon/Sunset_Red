@@ -2,7 +2,26 @@ CeruleanCity_House3_MapScripts::
 	.byte 0
 
 CeruleanCity_House3_EventScript_OldWoman::
-	msgbox CeruleanCity_House3_Text_PleaseTradeWithMyHusband, MSGBOX_NPC
+	goto_if_set FLAG_GIFT_BULBASAUR, CeruleanCity_House3_Script_AlreadyBulbasaur
+	goto_if_eq PLAYER_STARTER_SPECIES, SPECIES_BULBASAUR, CeruleanCity_House3_Script_AlreadyBulbasaur
+	msgbox CeruleanCity_House3_Text_OfferBulbasaur
+	specialvar VAR_RESULT, GetLeadMonFriendship
+	goto_if_ge VAR_RESULT, 5, CeruleanCity_House3_EventScript_FriendshipClear
+	msgbox CeruleanCity_House3_Text_FriendshipFail
+	release
+	end
+
+CeruleanCity_House3_EventScript_FriendshipClear::
+	msgbox CeruleanCity_House3_Text_FriendshipClear, MSGBOX_YESNO
+	getpartysize
+	compare VAR_RESULT, 6
+	goto_if_eq CeruleanCity_House3_EventScript_PartyFull
+	givemon SPECIES_BULBASAUR, 10, ITEM_MIRACLE_SEED
+	setflag FLAG_GIFT_BULBASAUR
+	playfanfare MUS_LEVEL_UP
+	msgbox Text_ReceivedBulbasaur, MSGBOX_DEFAULT
+	waitfanfare
+	release
 	end
 
 CeruleanCity_House3_EventScript_Dontae::
@@ -37,4 +56,13 @@ CeruleanCity_House3_EventScript_NotRequestedMon::
 CeruleanCity_House3_EventScript_AlreadyTraded::
 	msgbox Trade_Text_HasTradedMonGrownStronger
 	release
+	end
+
+CeruleanCity_House3_Script_AlreadyBulbasaur::
+	goto_if_set FLAG_DID_ZYNX_TRADE, CeruleanCity_House3_EventScript_AlreadyTraded
+	msgbox CeruleanCity_House3_Text_PleaseTradeWithMyHusband, MSGBOX_NPC
+	end
+
+CeruleanCity_House3_EventScript_PartyFull::
+	msgbox CeruleanCity_House3_Text_PartyFull, MSGBOX_NPC
 	end

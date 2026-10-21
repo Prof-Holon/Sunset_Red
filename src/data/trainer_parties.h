@@ -304,10 +304,35 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BugCatcherDoug[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_BugCatcherSammy[] = {
     {
         .iv = 0,
-        .lvl = 9,
-        .species = SPECIES_WEEDLE,
+        .lvl = 10,
+        .species = SPECIES_BEEDRILL,
     },
 };
+
+//add for Viridian Forest
+
+static const struct TrainerMonNoItemDefaultMoves sParty_BugCatcherStacey[] = {
+    {
+        .iv = 0,
+        .lvl = 10,
+        .species = SPECIES_BUTTERFREE,
+    },
+};
+
+static const struct TrainerMonNoItemDefaultMoves sParty_LassBrittany[] = {
+    {
+        .iv = 0,
+        .lvl = 6,
+        .species = SPECIES_NIDORAN_F,
+    },
+    {
+        .iv = 0,
+        .lvl = 6,
+        .species = SPECIES_NIDORAN_M,
+    },
+};
+
+// End add
 
 static const struct TrainerMonNoItemDefaultMoves sParty_BugCatcherColton[] = {
     {
@@ -894,6 +919,11 @@ static const struct TrainerMonNoItemDefaultMoves sParty_CamperEthan[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_CamperRicky[] = {
     {
         .iv = 0,
+        .lvl = 16,
+        .species = SPECIES_WEEPINBELL,
+    },
+    {
+        .iv = 0,
         .lvl = 20,
         .species = SPECIES_SQUIRTLE,
     },
@@ -961,8 +991,8 @@ static const struct TrainerMonNoItemDefaultMoves sParty_PicnickerDiana[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_PicnickerNancy[] = {
     {
         .iv = 0,
-        .lvl = 16,
-        .species = SPECIES_RATTATA,
+        .lvl = 20,
+        .species = SPECIES_CUBONE,
     },
     {
         .iv = 0,

@@ -170,7 +170,7 @@
       "x": 8,
       "y": 13,
       "elevation": 0,
-      "item": "ITEM_TM53",
+      "item": "ITEM_MASTER_BALL",
       "flag": "FLAG_TEMP_1",
       "quantity": 1,
       "underfoot": false

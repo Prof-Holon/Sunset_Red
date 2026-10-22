@@ -241,7 +241,7 @@
       "y": 26,
       "elevation": 0,
       "item": "ITEM_HP_UP",
-      "flag": "FLAG_TEMP_1",
+      "flag": "FLAG_HIDDEN_ITEM_MT_MOON_HP_UP",
       "quantity": 1,
       "underfoot": false
     },
@@ -251,7 +251,7 @@
       "y": 5,
       "elevation": 0,
       "item": "ITEM_TM51",
-      "flag": "FLAG_TEMP_1",
+      "flag": "FLAG_HIDDEN_ITEM_MT_MOON_TM51",
       "quantity": 1,
       "underfoot": false
     }

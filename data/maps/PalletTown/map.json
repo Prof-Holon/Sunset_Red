@@ -70,6 +70,21 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
       "flag": "FLAG_HIDE_OAK_IN_PALLET_TOWN"
+    },
+    {
+      "local_id": "LOCALID_PALLET_TEST",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_POLIWRATH",
+      "x": 9,
+      "y": 16,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PalletTown_EventScript_Test",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -164,16 +179,6 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "PalletTown_EventScript_TrainerTips"
-    },
-    {
-      "type": "hidden_item",
-      "x": 8,
-      "y": 13,
-      "elevation": 0,
-      "item": "ITEM_MASTER_BALL",
-      "flag": "FLAG_TEMP_1",
-      "quantity": 1,
-      "underfoot": false
     }
   ]
 }

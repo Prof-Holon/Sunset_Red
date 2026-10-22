@@ -104,7 +104,6 @@ Route24_EventScript_GiveCharmander::
 	msgbox Route24_Text_CharmanderQuestion, MSGBOX_YESNO
 	compare VAR_RESULT, 0
 	goto_if_eq Route24_PlayerAnsweredNo
-	msgbox Route24_Text_TakeCharmander, MSGBOX_DEFAULT
 	getpartysize
 	compare VAR_RESULT, 6
 	goto_if_eq Route24_PlayerHasFullParty

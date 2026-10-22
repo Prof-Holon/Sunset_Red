@@ -447,3 +447,7 @@ PalletTown_EventScript_SignLadyStartShowSign::
 	call PalletTown_EventScript_SignLadyShowSign
 	release
 	end
+
+PalletTown_EventScript_Test::
+	msgbox PalletTown_Text_Test, MSGBOX_NPC
+	end

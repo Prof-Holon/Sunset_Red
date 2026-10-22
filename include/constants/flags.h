@@ -190,12 +190,12 @@
 #define FLAG_HIDE_SAFFRON_CITY_POKECENTER_SABRINA_JOURNALS 0x0AE
 
 // Unused?
-#define FLAG_0x0AF               0x0AF
-#define FLAG_0x0B0               0x0B0
-#define FLAG_0x0B1               0x0B1
-#define FLAG_0x0B2               0x0B2
-#define FLAG_0x0B3               0x0B3
-#define FLAG_0x0B4               0x0B4
+#define FLAG_SQUIRTLE_GIFT               0x0AF
+#define FLAG_GIFT_BULBASAUR               0x0B0
+#define FLAG_GIFT_CHARMANDER               0x0B1
+#define FLAG_HIDDEN_ITEM_MT_MOON_TM51               0x0B2
+#define FLAG_HIDDEN_ITEM_MT_MOON_HP_UP               0x0B3
+#define FLAG_HIDDEN_ITEM_MT_MOON_TM61               0x0B4
 #define FLAG_0x0B5               0x0B5
 #define FLAG_0x0B6               0x0B6
 #define FLAG_0x0B7               0x0B7

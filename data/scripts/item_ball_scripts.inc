@@ -26,8 +26,8 @@ MtMoon_1F_EventScript_ItemTM09::
 	finditem ITEM_TM09
 	end
 
-MtMoon_1F_EventScript_ItemPotion::
-	finditem ITEM_POTION
+MtMoon_1F_EventScript_ItemTM61::
+	finditem ITEM_TM61
 	end
 
 MtMoon_1F_EventScript_ItemRareCandy::

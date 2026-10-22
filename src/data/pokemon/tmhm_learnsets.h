@@ -3,6 +3,9 @@
 // Each species array lists the TM/HM numbers (relative to ITEM_TM01) it can learn,
 // terminated by TMHM(TM66_RAGE), TMHM(TM71_MIMIC), TMHM(TM72_BIDE), TMHM(TM86_SUBSTITUTE), TMHM_LEARNSET_END (0xFF).
 
+#ifndef GUARD_TMHM_LEARNSETS_H
+#define GUARD_TMHM_LEARNSETS_H
+
 #define TMHM(tmhm)          ((u8) ((ITEM_##tmhm) - ITEM_TM01))
 #define TMHM_LEARNSET_END   0xFF
 
@@ -12695,3 +12698,5 @@ const u8 *const gTMHMLearnsets[] =
     [SPECIES_DEOXYS] = sDeoxysTMHMLearnset,
     [SPECIES_CHIMECHO] = sChimechoTMHMLearnset,
 };
+
+#endif // GUARD_TMHM_LEARNSETS_H

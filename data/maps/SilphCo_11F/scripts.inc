@@ -131,3 +131,8 @@ SilphCo_11F_EventScript_Grunt2::
 	trainerbattle_single TRAINER_TEAM_ROCKET_GRUNT_41, SilphCo_11F_Text_Grunt2Intro, SilphCo_11F_Text_Grunt2Defeat
 	msgbox SilphCo_11F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
 	end
+
+SilphCo_11F_EventScript_RocketTrio::
+	trainerbattle_double TRAINER_TEAM_ROCKET_JESSE_JAMES_SILPHCO, SilphCo_11F_Text_RocketTrioIntro, SilphCo_11F_Text_RocketTrioDefeat
+	msgbox SilphCo_11F_Text_RocketTrioPostBattle, MSGBOX_AUTOCLOSE
+	end

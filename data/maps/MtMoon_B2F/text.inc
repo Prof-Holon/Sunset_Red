@@ -82,3 +82,25 @@ MtMoon_B2F_Text_ObtainedHelixFossil::
 MtMoon_B2F_Text_ObtainedDomeFossil::
     .string "Obtained the DOME FOSSIL!$"
 
+MtMoon_B2F_Text_JesseJamesIntro:: 
+    .string "Jesse: Prepare for trouble!\p"
+    .string "James: And make it double!\p"
+    .string "Jesse: To protect the world from\n"
+    .string "devastation!\p"
+    .string "James: To unite all peoples within\n"
+    .string "our nation!\p"
+    .string "Jesse: To denounce the evils of\n"
+    .string "truth and love!\p"
+    .string "James: To extend our reach to the\n"
+    .string "stars above!\p"
+    .string "Jesse: Jesse!\p"
+    .string "James: James!\p"
+    .string "Jesse: Team Rocket blasts off at the\n"
+    .string "speed of light!\p"
+    .string "James: Surrender now, or prepare to fight!\p"
+
+MtMoon_B2F_Text_JesseJamesDefeat::
+    .string "Team ROCKET's blasting off again!$"
+
+MtMoon_B2F_Text_JesseJamesPostBattle::
+    .string "Beat it, twerp!$"

@@ -54,3 +54,14 @@ RocketHideout_B4F_Text_Grunt1PostBattle::
     .string "Oh, no!\n"
     .string "I dropped the LIFT KEY!$"
 
+RocketHideout_B4F_Text_RocketTrioIntro::
+    .string "Not another step, brat!\n"
+    .string "How dare you humiliate us.\l"
+    .string "at MT. MOON?\p"
+    .string "It's payback time, brat!$"
+
+RocketHideout_B4F_Text_RocketTrioDefeat::
+    .string "Scuh a dreadful twerp!$"
+
+RocketHideout_B4F_Text_RocketTrioPostBattle::
+    .string "Our BOSS will show you...$"

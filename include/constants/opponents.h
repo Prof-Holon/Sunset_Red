@@ -748,12 +748,17 @@
 #define TRAINER_CUE_BALL_PAXTON                  742
 #define TRAINER_BUG_CATCHER_STACEY				  743
 #define TRAINER_LASS_BRITTANY					  744
+#define TRAINER_TEAM_ROCKET_JESSE_JAMES_MT_MOON 745
+#define TRAINER_TEAM_ROCKET_JESSE_JAMES_HIDEOUT 746
+#define TRAINER_TEAM_ROCKET_JESSE_JAMES_TOWER 747
+#define TRAINER_TEAM_ROCKET_JESSE_JAMES_SILPHCO 748
+
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is 
 //       only space for 25 additional trainers before trainer flag space overflows.
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define NUM_TRAINERS                             745 // above plus one
+#define NUM_TRAINERS                             749 // above plus one
 #define MAX_TRAINERS_COUNT                       768
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H

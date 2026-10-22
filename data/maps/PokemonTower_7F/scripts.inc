@@ -229,3 +229,64 @@ PokemonTower_7F_Movement_Grunt3ExitLeft::
 	walk_down
 	walk_down
 	step_end
+
+PokemonTower_7F_EventScript_RocketTrio::
+	trainerbattle_double TRAINER_TEAMTRAINER_TEAM_ROCKET_JESSE_JAMES_TOWER, PokemonTower_7F_Text_RocketTrioIntro, PokemonTower_7F_Text_RocketTrioDefeat, PokemonTower_7F_EventScript_DefeatedRocketTrio
+	msgbox PokemonTower_7F_Text_RocketTrioPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+PokemonTower_7F_EventScript_DefeatedRocketTrio::
+	msgbox PokemonTower_7F_Text_RocketTrioPostBattle
+	closemessage
+	getplayerxy VAR_0x8004, VAR_0x8005
+	goto_if_eq VAR_0x8005, 10, PokemonTower_7F_EventScript_RocketTrioExitSpeak
+	applymovement TOWER_JAMES, PokemonTower_7F_Movement_RocketTrioExit
+	applymovement TOWER_JESSE, PokemonTower_7F_Movement_RocketTrioExit
+	waitmovement 0
+	goto PokemonTower_7F_EventScript_RemoveRocketTrio
+	end
+
+PokemonTower_7F_EventScript_RocketTrioExitSpeak::
+	applymovement TOWER_JAMES, PokemonTower_7F_Movement_RocketTrioExitRight
+	applymovement TOWER_JESSE, PokemonTower_7F_Movement_RocketTrioExitLeft
+	waitmovement 0
+	goto PokemonTower_7F_EventScript_RemoveRocketTrio
+	end
+
+PokemonTower_7F_EventScript_RemoveRocketTrio::
+	removeobject TOWER_JAMES
+	removeobject TOWER_JESSE
+	release
+	end
+
+PokemonTower_7F_Movement_RocketTrioExitRight::
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+PokemonTower_7F_Movement_RocketTrioExit::
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+PokemonTower_7F_Movement_RocketTrioExitLeft::
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end

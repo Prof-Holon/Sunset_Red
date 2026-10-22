@@ -48,3 +48,16 @@ PokemonTower_7F_Text_MrFujiThankYouFollowMe::
     .string "Follow me to my home, POKéMON\n"
     .string "HOUSE, at the foot of this tower.$"
 
+PokemonTower_7F_Text_RocketTrioIntro::
+    .string "Stop right there!\p"
+    .string "Grampa here wanted to complain,\n"
+    .string "so we're setting him straight.\p"
+    .string "So render yourself invisible,\n"
+    .string "or prepare to fight!$"
+
+PokemonTower_7F_Text_RocketTrioDefeat::
+    .string "Looks like Team Rocket's\n"
+    .string "blasting off again!$"
+
+PokemonTower_7F_Text_RocketTrioPostBattle::
+    .string "Meowth! That's right!$"

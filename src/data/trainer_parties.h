@@ -10890,3 +10890,99 @@ static const struct TrainerMonNoItemDefaultMoves sParty_CueBallPaxton[] = {
         .species = SPECIES_MUK,
     },
 };
+
+static const struct TrainerMonNoItemCustomMoves sParty_JesseJamesMtMoon[] = {
+    {
+        .iv = 100,
+        .lvl = 14,
+        .species = SPECIES_EKANS,
+        .moves = {MOVE_POISON_FANG, MOVE_WRAP, MOVE_BITE, MOVE_LEER},
+    },
+    {
+        .iv = 100,
+        .lvl = 14,
+        .species = SPECIES_KOFFING,
+        .moves = {MOVE_DESTINY_BOND, MOVE_POISON_GAS, MOVE_TACKLE, MOVE_SMOG},
+    },
+    {
+        .iv = 255,
+        .lvl = 14,
+        .species = SPECIES_MEOWTH,
+        .moves = {MOVE_ASSIST, MOVE_SCRATCH, MOVE_GROWL, MOVE_THIEF},
+    },
+};
+
+static const struct TrainerMonNoItemCustomMoves sParty_JesseJamesHideout[] = {
+    {
+        .iv = 100,
+        .lvl = 25,
+        .species = SPECIES_EKANS,
+        .moves = {MOVE_POISON_FANG, MOVE_WRAP, MOVE_BITE, MOVE_GLARE},
+    },
+    {
+        .iv = 100,
+        .lvl = 25,
+        .species = SPECIES_KOFFING,
+        .moves = {MOVE_DESTINY_BOND, MOVE_POISON_GAS, MOVE_SELF_DESTRUCT, MOVE_SLUDGE},
+    },
+    {
+        .iv = 255,
+        .lvl = 25,
+        .species = SPECIES_MEOWTH,
+        .moves = {MOVE_ASSIST, MOVE_PAY_DAY, MOVE_GROWL, MOVE_THIEF},
+    },
+};
+
+static const struct TrainerMonNoItemCustomMoves sParty_JesseJamesTower[] = {
+    {
+        .iv = 100,
+        .lvl = 27,
+        .species = SPECIES_ARBOK,
+        .moves = {MOVE_POISON_FANG, MOVE_WRAP, MOVE_BITE, MOVE_GLARE},
+    },
+    {
+        .iv = 100,
+        .lvl = 27,
+        .species = SPECIES_WEEZING,
+        .moves = {MOVE_DESTINY_BOND, MOVE_POISON_GAS, MOVE_SELF_DESTRUCT, MOVE_SLUDGE},
+    },
+    {
+        .iv = 255,
+        .lvl = 27,
+        .species = SPECIES_MEOWTH,
+        .moves = {MOVE_ASSIST, MOVE_PAY_DAY, MOVE_GROWL, MOVE_THIEF},
+    },
+};
+
+static const struct TrainerMonNoItemCustomMoves sParty_JesseJamesSilphco[] = {
+    {
+        .iv = 100,
+        .lvl = 31,
+        .species = SPECIES_ARBOK,
+        .moves = {MOVE_POISON_FANG, MOVE_WRAP, MOVE_BITE, MOVE_GLARE},
+    },
+    {
+        .iv = 100,
+        .lvl = 31,
+        .species = SPECIES_WEEZING,
+        .moves = {MOVE_DESTINY_BOND, MOVE_POISON_GAS, MOVE_SELF_DESTRUCT, MOVE_SLUDGE},
+    },
+    {
+        .iv = 100,
+        .lvl = 31,
+        .species = SPECIES_VICTREEBEL,
+        .moves = {MOVE_ACID, MOVE_RAZOR_LEAF, MOVE_WRAP, MOVE_GROWTH},
+    },
+    {
+        .iv = 100,
+        .lvl = 31,
+        .species = SPECIES_LICKITUNG,
+        .moves = {MOVE_LICK, MOVE_WRAP, MOVE_KNOCK_OFF, MOVE_STOMP},
+    },
+    {
+        .iv = 255,
+        .lvl = 31,
+        .species = SPECIES_MEOWTH,
+        .moves = {MOVE_ASSIST, MOVE_PAY_DAY, MOVE_SCREECH, MOVE_THIEF},
+    },
+};

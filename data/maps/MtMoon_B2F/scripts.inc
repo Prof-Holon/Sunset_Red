@@ -134,3 +134,8 @@ MtMoon_B2F_EventScript_Grunt4::
 	trainerbattle_single TRAINER_TEAM_ROCKET_GRUNT_4, MtMoon_B2F_Text_Grunt4Intro, MtMoon_B2F_Text_Grunt4Defeat
 	msgbox MtMoon_B2F_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
 	end
+
+MtMoon_B2F_EventScript_JesseJames::
+	trainerbattle_double TRAINER_TEAM_ROCKET_JESSE_JAMES_MT_MOON, MtMoon_B2F_Text_JesseJamesIntro, MtMoon_B2F_Text_JesseJamesDefeat
+	msgbox MtMoon_B2F_Text_JesseJamesPostBattle, MSGBOX_AUTOCLOSE
+	end

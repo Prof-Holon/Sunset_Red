@@ -92,3 +92,15 @@ SilphCo_11F_Text_FloorSign::
     .string "SILPH CO. HEAD OFFICE\n"
     .string "11F$"
 
+SilphCo_11F_Text_RocketTrioIntro::
+    .string "Hold it right there, brat!\p"
+    .string "Our BOSS is in a meeting.\n"
+    .string "You better not disturb him!$"
+
+SilphCo_11F_Text_RocketTrioDefeat::
+    .string "Team Rocket blast off\n"
+    .string "at the speed of light!\p"
+    .string "Again...$"
+
+SilphCo_11F_Text_RocketTrioPostBattle::
+    .string "Meowth! That's right!$"

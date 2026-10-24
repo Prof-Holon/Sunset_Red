@@ -35,3 +35,16 @@ CeladonCity_GameCorner_PrizeRoom_Text_OopsNotEnoughRoom::
 CeladonCity_GameCorner_PrizeRoom_Text_OhFineThen::
     .string "あっ そう$"
 
+CeladonCity_GameCorner_PrizeRoom_Text_OfferCoins::
+    .string "I have loads of COINS but I'm\n"
+    .string "Not a POKeMON trainer...\p"
+    .string "Say, would you like to trade\n"
+    .string "a NUGGET for 1000 COINS?$"
+CeladonCity_GameCorner_PrizeRoom_Text_RefuseOffer::
+    .string "Ah well, worth a shot.$"
+CeladonCity_GameCorner_PrizeRoom_Text_LackNugget::
+    .string "Hmph! You don't have a NUGGET!$"
+CeladonCity_GameCorner_PrizeRoom_Text_CoinsFull::
+    .string "Looks like your COIN CASE is full!$"
+CeladonCity_GameCorner_PrizeRoom_Text_ExecutedTrade::
+    .string "Pleasure doing business with you.$"

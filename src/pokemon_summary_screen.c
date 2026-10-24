@@ -1134,7 +1134,8 @@ static void Task_InputHandler_Info(u8 taskId)
                     sMonSummaryScreen->lastPageFlipDirection = 1;
                     return;
                 }
-                else if (sMonSummaryScreen->curPageIndex < PSS_PAGE_MOVES)
+                else if (sMonSummaryScreen->curPageIndex < PSS_PAGE_MOVES
+                    && sMonSummaryScreen->curPageIndex != PSS_PAGE_SKILLS_IV_EV) // add for SELECT
                 {
                     PlaySE(SE_SELECT);
                     HideBg(0);
@@ -1198,6 +1199,30 @@ static void Task_InputHandler_Info(u8 taskId)
             {
                 sMonSummaryScreen->state3270 = PSS_STATE3270_ATEXIT_FADEOUT;
             }
+            //add for IV and EV screen
+            else if (JOY_NEW(SELECT_BUTTON)
+                && sMonSummaryScreen->curPageIndex == PSS_PAGE_SKILLS)
+            {
+                PlaySE(SE_SELECT);
+                HideBg(0);
+                sMonSummaryScreen->pageFlipDirection = 1;
+                PokeSum_RemoveWindows(sMonSummaryScreen->curPageIndex);
+                sMonSummaryScreen->curPageIndex = PSS_PAGE_SKILLS_IV_EV;
+                sMonSummaryScreen->state3270 = PSS_STATE3270_FLIPPAGES;
+                return;
+            }
+            else if (JOY_NEW(SELECT_BUTTON)
+                  && sMonSummaryScreen->curPageIndex == PSS_PAGE_SKILLS_IV_EV)
+            {
+                PlaySE(SE_SELECT);
+                HideBg(0);
+                sMonSummaryScreen->pageFlipDirection = 0;
+                PokeSum_RemoveWindows(sMonSummaryScreen->curPageIndex);
+                sMonSummaryScreen->curPageIndex = PSS_PAGE_SKILLS;
+                sMonSummaryScreen->state3270 = PSS_STATE3270_FLIPPAGES;
+                return;
+            }
+            //end add
         }
         break;
     case PSS_STATE3270_FLIPPAGES:
@@ -2517,6 +2542,11 @@ static void PokeSum_PrintRightPaneText(void)
     case PSS_PAGE_MOVES_INFO:
         PrintMovesPage();
         break;
+    // ADD
+    case PSS_PAGE_SKILLS_IV_EV:
+        PrintIVEVPage();
+        break;
+    //end add
     }
 
     PutWindowTilemap(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE]);
@@ -2558,38 +2588,44 @@ static void PrintInfoPage(void)
 
 static void PrintSkillsPage(void)
 {
-    // HP — unchanged
     AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 14 + sMonSkillsPrinterXpos->curHpStr, 4, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.curHpStrBuf);
 
-    // ADD: HP IV and EV on the same row
     AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 58, 4, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[4]);
-    // AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 70, 4, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[4]);
 
-    // ATK — y=22, stat value left column, IV and EV right columns
     AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 50 + sMonSkillsPrinterXpos->atkStr, 22, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.statValueStrBufs[PSS_STAT_ATK]);
-    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 58, 22, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[0]);
-    // AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 70, 22, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[0]);
 
-    // DEF — y=35
     AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 50 + sMonSkillsPrinterXpos->defStr, 35, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.statValueStrBufs[PSS_STAT_DEF]);
-    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 58, 35, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[1]);
-   // AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 70, 35, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[1]);
 
-    // SPECIAL — y=54 (centred between old y=48 and y=61, SpDef row removed)
     AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 50 + sMonSkillsPrinterXpos->spAStr, 54, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.statValueStrBufs[PSS_STAT_SPA]);
-    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 58, 54, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[2]);
-   // AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 70, 54, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[2]);
 
-    // SPEED — not shifted
     AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 50 + sMonSkillsPrinterXpos->speStr, 74, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.statValueStrBufs[PSS_STAT_SPE]);
-    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 58, 74, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[3]);
-   // AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 70, 74, sLevelNickTextColors[1], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[3]);
 
-    // EXP — not shifted
     AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 15 + sMonSkillsPrinterXpos->expStr, 87, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.expPointsStrBuf);
 
-    // To Next — not shifted
     AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_NORMAL, 15 + sMonSkillsPrinterXpos->toNextLevel, 100, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.expToNextLevelStrBuf);
+}
+
+static void PrintIVEVPage(void)
+{
+    // Header labels
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 40, 13, sLevelNickTextColors[0], TEXT_SKIP_DRAW, _("IV"));
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 60, 13, sLevelNickTextColors[0], TEXT_SKIP_DRAW, _("EV"));
+
+    // HP
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 40, 4,  sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[4]);
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 60, 4,  sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[4]);
+    // ATK
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 40, 22, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[0]);
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 60, 22, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[0]);
+    // DEF
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 40, 35, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[1]);
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 60, 35, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[1]);
+    // SPECIAL
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 40, 48, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[2]);
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 60, 48, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[2]);
+    // SPEED
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 40, 61, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.ivStrBufs[3]);
+    AddTextPrinterParameterized3(sMonSummaryScreen->windowIds[POKESUM_WIN_RIGHT_PANE], FONT_SMALL, 60, 61, sLevelNickTextColors[0], TEXT_SKIP_DRAW, sMonSummaryScreen->summary.evStrBufs[3]);
 }
 
 #define GetMoveNamePrinterYpos(x) ((x) * 28 + 5)

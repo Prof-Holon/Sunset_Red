@@ -4173,9 +4173,9 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BossGiovanni2[] = {
 static const struct TrainerMonNoItemCustomMoves sParty_LeaderGiovanni[] = {
     {
         .iv = 0,
-        .lvl = 45,
-        .species = SPECIES_RHYHORN,
-        .moves = {MOVE_HORN_DRILL, MOVE_ROCK_BLAST, MOVE_SCARY_FACE, MOVE_EARTHQUAKE},
+        .lvl = 44,
+        .species = SPECIES_PERSIAN,
+        .moves = {MOVE_SLASH, MOVE_FURY_SWIPES, MOVE_SCREECH, MOVE_DOUBLE_TEAM},
     },
     {
         .iv = 0,
@@ -4185,7 +4185,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_LeaderGiovanni[] = {
     },
     {
         .iv = 0,
-        .lvl = 44,
+        .lvl = 45,
         .species = SPECIES_NIDOQUEEN,
         .moves = {MOVE_BODY_SLAM, MOVE_DOUBLE_KICK, MOVE_POISON_STING, MOVE_EARTHQUAKE},
     },
@@ -4199,7 +4199,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_LeaderGiovanni[] = {
         .iv = 0,
         .lvl = 50,
         .species = SPECIES_RHYDON,
-        .moves = {MOVE_STOMP, MOVE_ROCK_BLAST, MOVE_FISSURE, MOVE_EARTHQUAKE},
+        .moves = {MOVE_STOMP, MOVE_ROCK_BLAST, MOVE_HORN_DRILL, MOVE_EARTHQUAKE},
     },
 };
 
@@ -5657,7 +5657,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_LeaderMisty[] = {
         .iv = 0,
         .lvl = 21,
         .species = SPECIES_STARMIE,
-        .moves = {MOVE_SWIFT, MOVE_RECOVER, MOVE_BUBBLE_BEAM, MOVE_WATER_PULSE},
+        .moves = {MOVE_SWIFT, MOVE_RECOVER, MOVE_HARDEN, MOVE_WATER_PULSE},
     },
 };
 
@@ -5672,13 +5672,13 @@ static const struct TrainerMonNoItemCustomMoves sParty_LeaderLtSurge[] = {
         .iv = 0,
         .lvl = 18,
         .species = SPECIES_PIKACHU,
-        .moves = {MOVE_QUICK_ATTACK, MOVE_THUNDER_WAVE, MOVE_DOUBLE_TEAM, MOVE_SHOCK_WAVE},
+        .moves = {MOVE_MEGA_PUNCH, MOVE_THUNDER_WAVE, MOVE_DOUBLE_TEAM, MOVE_SHOCK_WAVE},
     },
     {
         .iv = 0,
         .lvl = 24,
         .species = SPECIES_RAICHU,
-        .moves = {MOVE_QUICK_ATTACK, MOVE_THUNDER_WAVE, MOVE_DOUBLE_TEAM, MOVE_THUNDERBOLT},
+        .moves = {MOVE_MEGA_KICK, MOVE_THUNDER_WAVE, MOVE_DOUBLE_TEAM, MOVE_THUNDERBOLT},
     },
 };
 
@@ -5719,8 +5719,8 @@ static const struct TrainerMonNoItemCustomMoves sParty_LeaderKoga[] = {
     {
         .iv = 0,
         .lvl = 37,
-        .species = SPECIES_KOFFING,
-        .moves = {MOVE_SELF_DESTRUCT, MOVE_SLUDGE, MOVE_SMOKESCREEN, MOVE_TOXIC},
+        .species = SPECIES_VENONAT,
+        .moves = {MOVE_DOUBLE_EDGE, MOVE_SLEEP_POWDER, MOVE_PSYBEAM, MOVE_TOXIC},
     },
     {
         .iv = 0,
@@ -5740,8 +5740,8 @@ static const struct TrainerMonNoItemCustomMoves sParty_LeaderBlaine[] = {
     {
         .iv = 0,
         .lvl = 40,
-        .species = SPECIES_PONYTA,
-        .moves = {MOVE_STOMP, MOVE_GROWL, MOVE_FIRE_SPIN, MOVE_TAIL_WHIP},
+        .species = SPECIES_NINETALES,
+        .moves = {MOVE_CONFUSE_RAY, MOVE_QUICK_ATTACK, MOVE_FLAMETHROWER MOVE_TAIL_WHIP},
     },
     {
         .iv = 0,

@@ -6,7 +6,41 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_BaldingMan::
 	end
 
 CeladonCity_GameCorner_PrizeRoom_EventScript_OldMan::
-	msgbox CeladonCity_GameCorner_PrizeRoom_Text_RakedItInToday, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_GOT_COIN_CASE, CeladonCity_GameCorner_PrizeRoom_EventScript_TradeForCoins
+	msgbox CeladonCity_GameCorner_PrizeRoom_Text_RakedItInToday
+	release
+	end
+
+CeladonCity_GameCorner_PrizeRoom_EventScript_TradeForCoins::
+	msbox CeladonCity_GameCorner_PrizeRoom_Text_OfferCoins, MSGBOX_YESNO
+	compare VAR_RESULT, 1
+	goto_if_eq CeladonCity_GameCorner_PrizeRoom_EventScript_CheckTradeNugget
+	msgbox CeladonCity_GameCorner_PrizeRoom_Text_RefuseOffer
+	release
+	end
+
+CeladonCity_GameCorner_PrizeRoom_EventScript_CheckTradeNugget::
+	checkcoins VAR_TEMP_1
+	goto_if_ge VAR_TEMP_1, (MAX_COINS + 1) - 1000, CeladonCity_GameCorner_PrizeRoom_EventScript_NoRoomForCoins
+	checkitemspace ITEM_NUGGET, 1
+	compare VAR_RESULT, 1
+	goto_if_ge CeladonCity_GameCorner_PrizeRoom_EventScript_ExecuteTradeNugget
+	msbox CeladonCity_GameCorner_PrizeRoom_Text_LackNugget
+	release
+	end
+
+CeladonCity_GameCorner_PrizeRoom_EventScript_NoRoomForCoins::
+	msbox CeladonCity_GameCorner_PrizeRoom_Text_CoinsFull
+	release
+	end
+
+CeladonCity_GameCorner_PrizeRoom_EventScript_ExecuteTradeNugget::
+	remove ITEM_NUGGET, 1
+	addcoins 1000
+	msgbox CeladonCity_GameCorner_PrizeRoom_Text_ExecutedTrade
+	release
 	end
 
 CeladonCity_GameCorner_PrizeRoom_EventScript_PrizeClerkMons::

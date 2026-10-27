@@ -42,6 +42,10 @@ ViridianCity_Gym_Text_ReceivedTM26FromGiovanni::
     .string "{PLAYER} received TM26\n"
     .string "from GIOVANNI.$"
 
+ViridianCity_Gym_Text_ReceivedTM69FromGiovanni::
+    .string "{PLAYER} received TM69,\n"
+    .string "it contains FISSURE.$"
+
 ViridianCity_Gym_Text_ExplainTM26::
     .string "TM26 contains EARTHQUAKE.\p"
     .string "It is a powerful attack that causes\n"

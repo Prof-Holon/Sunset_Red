@@ -138,3 +138,6 @@ VermilionCity_Gym_Text_OnlyTrashLocksWereReset::
     .string "Hey!\n"
     .string "The electric locks were reset!$"
 
+VermilionCity_Gym_Text_ReceivedTM24FromLtSurge::
+    .string "{PLAYER} received TM24,\n"
+    .string "it contains THUNDERBOLT.$"

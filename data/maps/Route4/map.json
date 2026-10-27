@@ -189,6 +189,16 @@
       "flag": "FLAG_HIDDEN_ITEM_ROUTE4_RAZZ_BERRY",
       "quantity": 1,
       "underfoot": false
+    },
+    {
+      "type": "hidden_item",
+      "x": 58,
+      "y": 3,
+      "elevation": 0,
+      "item": "ITEM_TM54",
+      "flag": "FLAG_HIDDEN_ITEM_RT_4_TM54",
+      "quantity": 1,
+      "underfoot": false
     }
   ]
 }

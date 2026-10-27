@@ -89,6 +89,15 @@ ViridianCity_Gym_EventScript_GymGuy::
 ViridianCity_Gym_EventScript_GymGuyPostVictory::
 	famechecker FAMECHECKER_GIOVANNI, 4
 	msgbox ViridianCity_Gym_Text_GymGuyPostVictory
+	goto_if_unset FLAG_GOT_TM69_FROM_GIOVANNI, ViridianCity_Gym_EventScript_GiveTM69
+	release
+	end
+
+ViridianCity_Gym_EventScript_GiveTM69::
+	checkitemspace ITEM_TM69
+	goto_if_eq VAR_RESULT, FALSE, ViridianCity_Gym_EventScript_NoRoomForTM26
+	giveitem_msg ViridianCity_Gym_Text_ReceivedTM69FromGiovanni, ITEM_TM69
+	setflag FLAG_GOT_TM69_FROM_GIOVANNI
 	release
 	end
 

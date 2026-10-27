@@ -54,6 +54,15 @@ CeruleanCity_Gym_EventScript_GymGuy::
 
 CeruleanCity_Gym_EventScript_GymGuyPostVictory::
 	msgbox CeruleanCity_Gym_Text_WeMakePrettyGoodTeam
+	goto_if_unset FLAG_GOT_TM60_FROM_MISTY, CeruleanCity_Gym_EventScript_GiveTM60
+	release
+	end
+
+CeruleanCity_Gym_EventScript_GiveTM60::
+	checkitemspace ITEM_TM60
+	goto_if_eq VAR_RESULT, FALSE, CeruleanCity_Gym_EventScript_NoRoomForTM03
+	giveitem_msg CeruleanCity_Gym_Text_ReceivedTM60FromMisty, ITEM_TM60
+	setflag FLAG_GOT_TM60_FROM_MISTY
 	release
 	end
 

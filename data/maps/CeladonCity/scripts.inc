@@ -12,7 +12,22 @@ CeladonCity_EventScript_LittleGirl::
 
 CeladonCity_EventScript_OldMan1::
 	lock
+	goto_if_set FLAG_DEFEATED_ERIKA, CeladonCity_EventScript_OldMan1_PostGym
 	msgbox CeladonCity_Text_GymIsGreatFullOfWomen
+	release
+	end
+
+CeladonCity_EventScript_OldMan1_PostGym::
+	msgbox CeladonCity_Text_GymBattleGreat
+	goto_if_unset FLAG_GOT_TM21_FROM_ERIKA, CeladonCity_EventScript_OldMan1_GiveTM21
+	release
+	end
+
+CeladonCity_EventScript_OldMan1_GiveTM21::
+	checkitemspace ITEM_TM21
+	goto_if_eq VAR_RESULT, FALSE, CeladonCity_Gym_EventScript_NoRoomForTM19
+	giveitem_msg CeladonCity_Gym_Text_ReceivedTM21FromErika, ITEM_TM21
+	setflag FLAG_GOT_TM21_FROM_ERIKA
 	release
 	end
 

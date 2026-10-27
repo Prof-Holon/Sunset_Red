@@ -80,6 +80,15 @@ SaffronCity_Gym_EventScript_GymGuy::
 
 SaffronCity_Gym_EventScript_GymGuyPostVictory::
 	msgbox SaffronCity_Gym_Text_GymGuyPostVictory
+	goto_if_unset FLAG_GOT_TM82_FROM_SABRINA, SaffronCity_Gym_EventScript_GiveTM82
+	release
+	end
+
+SaffronCity_Gym_EventScript_GiveTM82::
+	checkitemspace ITEM_TM82
+	goto_if_eq VAR_RESULT, FALSE, SaffronCity_Gym_EventScript_NoRoomForTM04
+	giveitem_msg SaffronCity_Gym_Text_ReceivedTM82FromSabrina, ITEM_TM82
+	setflag FLAG_GOT_TM82_FROM_SABRINA
 	release
 	end
 

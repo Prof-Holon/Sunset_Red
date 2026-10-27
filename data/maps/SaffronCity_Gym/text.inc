@@ -34,6 +34,10 @@ SaffronCity_Gym_Text_ReceivedTM04FromSabrina::
     .string "{PLAYER} received TM04 from\n"
     .string "SABRINA.$"
 
+SaffronCity_Gym_Text_ReceivedTM82FromSabrina::
+    .string "{PLAYER} received TM82,\n"
+    .string "it contians PSYWAVE.$"
+
 SaffronCity_Gym_Text_ExplainTM04::
     .string "TM04 is CALM MIND.\p"
     .string "It makes the POKéMON concentrate\n"

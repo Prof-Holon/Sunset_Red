@@ -51,6 +51,15 @@ PewterCity_Gym_EventScript_GymGuy::
 
 PewterCity_Gym_EventScript_GymGuyPostVictory::
 	msgbox PewterCity_Gym_Text_YoureChampMaterial
+	goto_if_unset FLAG_GOT_TM72_FROM_BROCK, PewterCity_Gym_EventScript_GiveTM72
+	release
+	end
+
+PewterCity_Gym_EventScript_GiveTM72::
+	checkitemspace ITEM_TM72
+	goto_if_eq VAR_RESULT, FALSE, PewterCity_Gym_EventScript_NoRoomForTM39
+	giveitem_msg PewterCity_Gym_Text_ReceivedTM72FromBrock, ITEM_TM72
+	setflag FLAG_GOT_TM72_FROM_BROCK
 	release
 	end
 

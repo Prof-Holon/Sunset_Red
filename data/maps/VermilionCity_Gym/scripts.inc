@@ -272,6 +272,15 @@ VermilionCity_Gym_EventScript_GymGuy::
 
 VermilionCity_Gym_EventScript_GymGuyPostVictory::
 	msgbox VermilionCity_Gym_Text_GymGuyPostVictory
+	goto_if_unset FLAG_GOT_TM24_FROM_SURGE, VermilionCity_Gym_EventScript_GiveTM24
+	release
+	end
+
+VermilionCity_Gym_EventScript_GiveTM24::
+	checkitemspace ITEM_TM24
+	goto_if_eq VAR_RESULT, FALSE, VermilionCity_Gym_EventScript_NoRoomForTM34
+	giveitem_msg VermilionCity_Gym_Text_ReceivedTM24FromLtSurge, ITEM_TM24
+	setflag FLAG_GOT_TM24_FROM_SURGE
 	release
 	end
 

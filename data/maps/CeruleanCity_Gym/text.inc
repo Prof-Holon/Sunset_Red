@@ -90,3 +90,6 @@ CeruleanCity_Gym_Text_GymStatuePlayerWon::
     .string "WINNING TRAINERS:\n"
     .string "{RIVAL}, {PLAYER}$"
 
+CeruleanCity_Gym_Text_ReceivedTM60FromMisty::
+    .string "{PLAYER} received TM60,\n"
+    .string "it contains BUBBLE BEAM.$"

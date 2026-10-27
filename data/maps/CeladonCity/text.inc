@@ -112,3 +112,12 @@ CeladonCity_Text_SomeoneStoleSilphScope::
     .string "But I lost sight of him!\n"
     .string "Where'd he go?$"
 
+CeladonCity_Text_GymBattleGreat::
+    .string "Spectacular!\n"
+    .string "I loved to watch you battle!\p"
+    .string "Take this, I'm too old to\n"
+    .string "battle anymore...$"
+
+CeladonCity_Gym_Text_ReceivedTM21FromErika::
+    .string "{PLAYER} received TM21,\n"
+    .string "it contains MEGA DRAIN.$"

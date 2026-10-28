@@ -68,6 +68,7 @@ enum {
 // For the second argument of GetMoveTarget, when no target override is needed
 #define NO_TARGET_OVERRIDE 0
 
+
 struct TrainerMonNoItemDefaultMoves
 {
     u16 iv;
@@ -91,12 +92,15 @@ struct TrainerMonNoItemCustomMoves
     u16 moves[MAX_MON_MOVES];
 };
 
+//added abilityNum to customise abilities
+
 struct TrainerMonItemCustomMoves
 {
     u16 iv;
     u8 lvl;
     u16 species;
     u16 heldItem;
+    u8 abilityNum;
     u16 moves[MAX_MON_MOVES];
 };
 

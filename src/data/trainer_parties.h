@@ -6569,7 +6569,7 @@ static const struct TrainerMonItemCustomMoves sParty_ChampionFirstSquirtle[] = {
         .species = SPECIES_MAGNETON,
         .heldItem = ITEM_NONE,
         .abilityNum = 1,
-        .moves = {MOVE_THUNDERBOLT, MOVE_THUNDER_WAVE, MOVE_METAL_SOUND, MOVE_TRI_ATTACK},
+        .moves = {MOVE_ZAP_CANNON, MOVE_THUNDER_WAVE, MOVE_METAL_SOUND, MOVE_TRI_ATTACK},
     },
     {
         .iv = 255,
@@ -6620,7 +6620,7 @@ static const struct TrainerMonItemCustomMoves sParty_ChampionFirstBulbasaur[] = 
         .species = SPECIES_MAGNETON,
         .heldItem = ITEM_NONE,
         .abilityNum = 0,
-        .moves = {MOVE_THUNDERBOLT, MOVE_THUNDER_WAVE, MOVE_METAL_SOUND, MOVE_TRI_ATTACK},
+        .moves = {MOVE_ZAP_CANNON, MOVE_THUNDER_WAVE, MOVE_METAL_SOUND, MOVE_TRI_ATTACK},
     },
     {
         .iv = 255,
@@ -6679,7 +6679,7 @@ static const struct TrainerMonItemCustomMoves sParty_ChampionFirstCharmander[] =
         .species = SPECIES_JOLTEON,
         .heldItem = ITEM_MAGNET,
         .abilityNum = 0,
-        .moves = {MOVE_FRENZY_PLANT, MOVE_THUNDER, MOVE_QUICK_ATTACK, MOVE_PIN_MISSILE},
+        .moves = {MOVE_VOLT_TACKLE, MOVE_THUNDER, MOVE_QUICK_ATTACK, MOVE_PIN_MISSILE},
     },
     {
         .iv = 255,
@@ -11365,35 +11365,45 @@ static const struct TrainerMonNoItemCustomMoves sParty_JesseJamesTower[] = {
     },
 };
 
-static const struct TrainerMonNoItemCustomMoves sParty_JesseJamesSilphco[] = {
+static const struct TrainerMonItemCustomMoves sParty_JesseJamesSilphco[] = {
     {
         .iv = 100,
         .lvl = 31,
         .species = SPECIES_ARBOK,
+        .heldItem = ITEM_CHERI_BERRY,
+        .abilityNum = 0,
         .moves = {MOVE_POISON_FANG, MOVE_WRAP, MOVE_BITE, MOVE_GLARE},
     },
     {
         .iv = 100,
         .lvl = 31,
         .species = SPECIES_WEEZING,
+        .heldItem = ITEM_PERSIM_BERRY,
+        .abilityNum = 0,
         .moves = {MOVE_DESTINY_BOND, MOVE_POISON_GAS, MOVE_SELF_DESTRUCT, MOVE_SLUDGE},
     },
     {
         .iv = 100,
         .lvl = 31,
         .species = SPECIES_VICTREEBEL,
+        .heldItem = ITEM_RAWST_BERRY,
+        .abilityNum = 1,
         .moves = {MOVE_ACID, MOVE_RAZOR_LEAF, MOVE_WRAP, MOVE_GROWTH},
     },
     {
         .iv = 100,
         .lvl = 31,
         .species = SPECIES_LICKITUNG,
-        .moves = {MOVE_LICK, MOVE_WRAP, MOVE_KNOCK_OFF, MOVE_STOMP},
+        .heldItem = ITEM_CHESTO_BERRY,
+        .abilityNum = 1,
+        .moves = {MOVE_LICK, MOVE_WRAP, MOVE_REST, MOVE_STOMP},
     },
     {
         .iv = 247,
         .lvl = 31,
         .species = SPECIES_MEOWTH,
-        .moves = {MOVE_ASSIST, MOVE_PAY_DAY, MOVE_HIDDEN_POWER, MOVE_THIEF},
+        .heldItem = ITEM_AMULET_COIN,
+        .abilityNum = 0,
+        .moves = {MOVE_ASSIST, MOVE_PAY_DAY, MOVE_HIDDEN_POWER, MOVE_TAUNT},
     },
 };

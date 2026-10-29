@@ -1645,7 +1645,7 @@ static const u16 sHMMoves[] =
 static const u16 sSlicingMoves[] =
 {
     MOVE_CUT, MOVE_RAZOR_LEAF, MOVE_SLASH, MOVE_FURY_CUTTER,
-    MOVE_AIR_CUTTER, MOVE_AERIAL_ACE, MOVE_LEAF_BLADE, ABILITY_MOVE_LIST_END
+    MOVE_AIR_CUTTER, MOVE_AERIAL_ACE, MOVE_LEAF_BLADE, MOVE_RAZOR_WIND, ABILITY_MOVE_LIST_END
 };
 
 static const u16 sClawMoves[] =
@@ -2544,6 +2544,8 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         spDefense *= 2;
     if (attackerHoldEffect == HOLD_EFFECT_LIGHT_BALL && attacker->species == SPECIES_PIKACHU)
         spAttack *= 2;
+    if (attackerHoldEffect == HOLD_EFFECT_DOUBLE_PRIZE && attacker->species == SPECIES_MEOWTH) // add for amulet coin
+        Attack *= 2;
     if (defenderHoldEffect == HOLD_EFFECT_METAL_POWDER && defender->species == SPECIES_DITTO)
         defense *= 2;
     if (attackerHoldEffect == HOLD_EFFECT_THICK_CLUB && (attacker->species == SPECIES_CUBONE || attacker->species == SPECIES_MAROWAK))

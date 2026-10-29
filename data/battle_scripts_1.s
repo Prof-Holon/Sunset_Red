@@ -33,10 +33,10 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectMirrorMove             @ EFFECT_MIRROR_MOVE
 	.4byte BattleScript_EffectAttackUp               @ EFFECT_ATTACK_UP
 	.4byte BattleScript_EffectDefenseUp              @ EFFECT_DEFENSE_UP
-	.4byte BattleScript_EffectHit                    @ EFFECT_SPEED_UP
+	.4byte BattleScript_EffectSpeedUp                    @ EFFECT_SPEED_UP
 	.4byte BattleScript_EffectSpecialAttackUp        @ EFFECT_SPECIAL_ATTACK_UP
 	.4byte BattleScript_EffectHit                    @ EFFECT_SPECIAL_DEFENSE_UP
-	.4byte BattleScript_EffectHit                    @ EFFECT_ACCURACY_UP
+	.4byte BattleScript_EffectAccuracyUp                    @ EFFECT_ACCURACY_UP
 	.4byte BattleScript_EffectEvasionUp              @ EFFECT_EVASION_UP
 	.4byte BattleScript_EffectHit                    @ EFFECT_ALWAYS_HIT
 	.4byte BattleScript_EffectAttackDown             @ EFFECT_ATTACK_DOWN
@@ -82,9 +82,9 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectAttackDown2            @ EFFECT_ATTACK_DOWN_2
 	.4byte BattleScript_EffectDefenseDown2           @ EFFECT_DEFENSE_DOWN_2
 	.4byte BattleScript_EffectSpeedDown2             @ EFFECT_SPEED_DOWN_2
-	.4byte BattleScript_EffectHit                    @ EFFECT_SPECIAL_ATTACK_DOWN_2
+	.4byte BattleScript_EffectSpecialDefenseDown2                    @ EFFECT_SPECIAL_ATTACK_DOWN_2
 	.4byte BattleScript_EffectSpecialDefenseDown2    @ EFFECT_SPECIAL_DEFENSE_DOWN_2
-	.4byte BattleScript_EffectHit                    @ EFFECT_ACCURACY_DOWN_2
+	.4byte BattleScript_EffectAccuracyDown2                    @ EFFECT_ACCURACY_DOWN_2
 	.4byte BattleScript_EffectHit                    @ EFFECT_EVASION_DOWN_2
 	.4byte BattleScript_EffectReflect                @ EFFECT_REFLECT
 	.4byte BattleScript_EffectPoison                 @ EFFECT_POISON
@@ -483,12 +483,22 @@ BattleScript_EffectDefenseUp::
 	setstatchanger STAT_DEF, 1, FALSE
 	goto BattleScript_EffectStatUp
 
+BattleScript_EffectSpeedUp::
+	setstatchanger STAT_SPEED, 1, FALSE
+	goto BattleScript_EffectStatUp
+
 BattleScript_EffectSpecialAttackUp::
 	setstatchanger STAT_SPATK, 1, FALSE
 	goto BattleScript_EffectStatUp
 
 BattleScript_EffectEvasionUp::
 	setstatchanger STAT_EVASION, 1, FALSE
+	goto BattleScript_EffectStatUp
+
+BattleScript_EffectAccuracyUp::
+	setstatchanger STAT_ACC, 1, FALSE
+	goto BattleScript_EffectStatUp
+
 BattleScript_EffectStatUp::
 	attackcanceler
 BattleScript_EffectStatUpAfterAtkCanceler::
@@ -833,9 +843,19 @@ BattleScript_EffectTrap::
 	orword gHitMarker, HITMARKER_IGNORE_UNDERWATER
 	setbyte sDMG_MULTIPLIER, 2
 BattleScript_DoWrapEffect::
+	attackcanceler
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	ppreduce
+	critcalc
+	damagecalc
+	typecalc
+	adjustnormaldamage
+	jumpifmovehadnoeffect BattleScript_ButItFailed
 	setmoveeffect MOVE_EFFECT_WRAP
+	seteffectprimary
 	setmoveeffect MOVE_EFFECT_FLINCH
-	goto BattleScript_EffectHit
+	goto BattleScript_HitFromAtkAnimation
 
 BattleScript_EffectDoubleHit::
 	attackcanceler
@@ -969,6 +989,10 @@ BattleScript_EffectSpeedDown2::
 
 BattleScript_EffectSpecialDefenseDown2::
 	setstatchanger STAT_SPATK, 2, TRUE
+	goto BattleScript_EffectStatDown
+
+BattleScript_EffectAccuracyDown2::
+	setstatchanger STAT_ACC, 2, TRUE
 	goto BattleScript_EffectStatDown
 
 BattleScript_EffectReflect::
@@ -1712,6 +1736,7 @@ BattleScript_EffectBatonPass::
 
 BattleScript_EffectRapidSpin::
 	setmoveeffect MOVE_EFFECT_RAPIDSPIN | MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN
+	setmoveeffect MOVE_EFFECT_SPD_PLUS_1 | MOVE_EFFECT_AFFECTS_USER
 	goto BattleScript_EffectHit
 
 BattleScript_EffectSonicboom::
@@ -2299,6 +2324,14 @@ BattleScript_EffectCharge::
 	attackanimation
 	waitanimation
 	printstring STRINGID_PKMNCHARGINGPOWER
+	waitmessage B_WAIT_TIME_LONG
+	setstatchanger STAT_SPATK, 1, FALSE
+	statbuffchange MOVE_EFFECT_AFFECTS_USER | STAT_CHANGE_ALLOW_PTR, BattleScript_MoveEnd
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_INCREASE, BattleScript_ChargeSpAtkWontRaise
+	setgraphicalstatchangevalues
+	playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
+BattleScript_ChargeSpAtkWontRaise::
+	printfromtable gStatUpStringIds
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
